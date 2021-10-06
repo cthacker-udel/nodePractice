@@ -11,3 +11,11 @@ class Logger extends EventEmitter {
 }
 
 module.exports = Logger
+
+let obj = {};
+
+let newObj = {id: 10, 'name': 'Object'};
+
+const cloneObj = {...newObj};
+
+console.log(JSON.stringify(cloneObj));
