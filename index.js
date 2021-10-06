@@ -55,7 +55,7 @@
 
     app.put('/api/courses/:id', (req,res) => {
         // lookup course
-        const course = courses.find(e => e.id === parseInt(res.params.id));
+        const course = courses.find(e => e.id === parseInt(req.params.id));
         if(!course){
             res.status(404).send('Cannot find course');
             return;
@@ -72,6 +72,22 @@
         res.send(course);
 
     });
+
+    app.delete('/api/courses/:id',(req,res) => {
+
+        // look up course
+        const course = courses.find(e => e.id === parseInt(req.params.id));
+        if(!course){
+            res.status(404).send('Cannot find course');
+            return;
+        }
+
+        const index = courses.indexOf(course);
+        courses.splice(index,1);
+
+        res.send(course);
+
+    })
 
     // PORT
 

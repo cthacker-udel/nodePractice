@@ -1,0 +1,19 @@
+{
+  "name": "vidly",
+  "version": "1.0.0",
+  "description": "vidlyapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "vidly",
+    "restapi"
+  ],
+  "author": "cthacker-udel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.2"
+  }
+}
