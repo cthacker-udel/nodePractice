@@ -1,9 +1,35 @@
+    const config = require('config');
     const Joi = require('joi');
     const express = require('express');
-
     const app = express();
+    const logger = require('./logger');
+    const authenticator = require('./authenticator');
+    const morgan = require('morgan');
+    const startupDebugger = require('debug')('app:startup');
+    const databaseDebugger = require('debug')('app:db');
+
 
     app.use(express.json());
+
+    app.use(express.urlencoded({extended: true})); //parses incoming requests into url encoded payloads, such as key=value&key=value
+
+    app.use(express.static('public'));
+
+    app.use(logger);
+
+    app.use(authenticator);
+
+    // Configuration
+
+    console.log('Application Name : ' + config.get('name'));
+    //console.log('mail password : ' + config.get('mail.password'));
+
+    if(app.get('env') === 'development'){
+        app.use(morgan('tiny'));
+        startupDebugger('Morgan enabled...');
+    }
+
+    databaseDebugger('Connected to database...');
 
     const courses = [
         {id: 1, name: 'course1'},

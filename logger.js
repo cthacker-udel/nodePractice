@@ -1,21 +1,6 @@
-const EventEmitter = require('events');
-
-var url = 'http://mylogger.io/log';
-
-class Logger extends EventEmitter {
-
-    log(msg){
-        this.emit('messageLogged',{data: msg});
-    }
-
+const log = (req,res,next) => {
+    console.log('Logging...');
+    next();
 }
 
-module.exports = Logger
-
-let obj = {};
-
-let newObj = {id: 10, 'name': 'Object'};
-
-const cloneObj = {...newObj};
-
-console.log(JSON.stringify(cloneObj));
+module.exports = log;
