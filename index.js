@@ -8,7 +8,6 @@
     const startupDebugger = require('debug')('app:startup');
     const databaseDebugger = require('debug')('app:db');
 
-
     app.use(express.json());
 
     app.use(express.urlencoded({extended: true})); //parses incoming requests into url encoded payloads, such as key=value&key=value
